@@ -1,2 +1,10 @@
 1.props 
 2.states
+we use two curly brace{{}} one for to indicate that its is a javascript 
+and the other to indicate that it is a object 
+
+in the new virsion of react-router-dom there is no switch tag
+we use routes instead of switch 
+and to open the like home, about without randering then we have to use 
+import {Link} from "react-router-dom"
+and use Link instead of <a/> and to instead of href

@@ -1,16 +1,15 @@
 import './App.css';
-import About from './components/About';
+// import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import Alerts from './components/Alerts';
 import React, {useState} from 'react';
 
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link
-} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route
+// } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light")// whether dark mode is enable or not
@@ -55,18 +54,20 @@ function App() {
   return (
     <>
     {/* <Navbar title = "TextUtiles2" aboutText="about us"/> this are called props */}
-    <Router>
+    {/* <Router> */}
     <Navbar title='TextUtils' mode={mode} toggleModeD={toggleModeD} toggleModeR={toggleModeR}/> 
       <Alerts alert = {alert}/>
     <div className='container my-3'>
-    <Routes>
-          <Route exact path="/about" element ={<About/>}>
+    {/* <Routes> */}
+          {/* <Route exact path="/about" element ={<About/>}>
           </Route>
           <Route exact path="/" element={<TextForm heading="Enter text to analyze"  mode={mode} showAlert={showAlert}/>}> 
           </Route>
-          </Routes>
+          </Routes> */}
+          <TextForm heading="Enter text to analyze"  mode={mode} showAlert={showAlert}/>
+
     </div>
-    </Router>
+    {/* </Router> */}
     </>
   );
 }

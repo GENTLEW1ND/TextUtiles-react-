@@ -27,6 +27,7 @@ export default function TextForm(props) {
         let text = document.getElementById("myBox")
         text.select()
         navigator.clipboard.writeText(text.value)
+        document.getSelection().removeAllRanges() //this are both function of react that is use to deselect the copyed area but it will still copy but wont show.
         props.showAlert("Text copied!", "success")
     }//for copying the text from the clipboard
     const handleExtraSpaces = () => {
@@ -43,23 +44,23 @@ export default function TextForm(props) {
                 <h2>{props.heading} </h2>
                 <div className="mb-3">
                     <textarea className="form-control" value={text} onChange={handleOnChange} style={{
-                        backgroundColor: props.mode === "dark" ? "grey" : "white",
+                        backgroundColor: props.mode === "dark" ? "#13466e" : "white",
                         color: props.mode === "dark" ? "white" : "#042743"
                     }} id="myBox" rows="8"></textarea>
                 </div>
-                <button className='btn btn-primary mx-1' onClick={handleUpClick}>convert to uppercase</button>
-                <button className='btn btn-primary mx-1' onClick={handleLoClick}>convert to lowercase</button>
-                <button className='btn btn-primary mx-1' onClick={handleClearClick}>clear text</button>
-                <button className='btn btn-primary mx-1' onClick={handleCopy}>copy text</button>
-                <button className='btn btn-primary mx-1' onClick={handleExtraSpaces}>remove extra space</button>
+                <button disabled={text.length===0} className='btn btn-primary mx-1 my-1' onClick={handleUpClick}>convert to uppercase</button>
+                <button disabled={text.length===0} className='btn btn-primary mx-1 my-1' onClick={handleLoClick}>convert to lowercase</button>
+                <button disabled={text.length===0}className='btn btn-primary mx-1 my-1' onClick={handleClearClick}>clear text</button>
+                <button disabled={text.length===0} className='btn btn-primary mx-1 my-1' onClick={handleCopy}>copy text</button>
+                <button disabled={text.length===0} className='btn btn-primary mx-1 my-1' onClick={handleExtraSpaces}>remove extra space</button>
             </div>
             <div className='container' style={{ color: props.mode === "dark" ? "white" : "#042743" }}>
                 <h1>Your text summery </h1>
-                <p>{text.split(' ').length} words and {text.length} characters </p>
+                <p>{text.split(' ').filter((element)=>{return element.length!==0}).length} words and {text.length} characters </p>
                 {/* {text.split(" ") gives an array which contains words and then we can find the length*/}
-                <p>{0.008 * text.split(" ").length} Minutes read</p>
+                <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes read</p>
                 <h2>Preview</h2>
-                <p>{text.length > 0 ? text : "Enter something in the text box above to preview it here"}</p>
+                <p>{text.length > 0 ? text : "Nothing to preview!"}</p>
             </div>
         </>
     )

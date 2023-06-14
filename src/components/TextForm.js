@@ -24,10 +24,10 @@ export default function TextForm(props) {
         setText(event.target.value)
     }
     const handleCopy = () => {
-        let text = document.getElementById("myBox")
-        text.select()
-        navigator.clipboard.writeText(text.value)
-        document.getSelection().removeAllRanges() //this are both function of react that is use to deselect the copyed area but it will still copy but wont show.
+        // let text = document.getElementById("myBox")
+        // text.select()
+        navigator.clipboard.writeText(text)
+        // document.getSelection().removeAllRanges() //this are both function of react that is use to deselect the copyed area but it will still copy but wont show.
         props.showAlert("Text copied!", "success")
     }//for copying the text from the clipboard
     const handleExtraSpaces = () => {
@@ -56,9 +56,9 @@ export default function TextForm(props) {
             </div>
             <div className='container' style={{ color: props.mode === "dark" ? "white" : "#042743" }}>
                 <h1>Your text summery </h1>
-                <p>{text.split(' ').filter((element)=>{return element.length!==0}).length} words and {text.length} characters </p>
+                <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} characters </p>
                 {/* {text.split(" ") gives an array which contains words and then we can find the length*/}
-                <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes read</p>
+                <p>{0.008 * text.split(/\s+/).filter((element)=>{return element.length!==0}).length} Minutes read</p>
                 <h2>Preview</h2>
                 <p>{text.length > 0 ? text : "Nothing to preview!"}</p>
             </div>

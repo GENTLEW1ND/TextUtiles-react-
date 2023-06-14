@@ -11,3 +11,5 @@ and use Link instead of <a/> and to instead of href
 
 disabled is function of react which can be use to disable any thing 
 like buttons or anything else
+
+/\s+/ means that any type of space including new lines

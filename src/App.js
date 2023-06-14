@@ -24,7 +24,7 @@ function App() {
       setAlert(null)
     },1500)
   }
-  const toggleModeD = ()=>{
+  const toggleMode = ()=>{
     if(mode === "light"){
       setMode("dark")
       document.body.style.backgroundColor = "#042743"
@@ -39,23 +39,23 @@ function App() {
     document.title = "TextUtiles -Light Mode"
     }
   }
-  const toggleModeR = ()=>{
-    if(mode === "light"){
-      setMode("red")
-      document.body.style.backgroundColor = "red"
-      showAlert("red mode has been enables","success")
-    }
-    else{
-    setMode ("light")
-    document.body.style.backgroundColor = "white"
-    showAlert("light mode has been enables","success")
-    }
-  }
+  // const toggleModeR = ()=>{
+  //   if(mode === "light"){
+  //     setMode("red")
+  //     document.body.style.backgroundColor = "red"
+  //     showAlert("red mode has been enables","success")
+  //   }
+  //   else{
+  //   setMode ("light")
+  //   document.body.style.backgroundColor = "white"
+  //   showAlert("light mode has been enables","success")
+  //   }
+  // }
   return (
     <>
     {/* <Navbar title = "TextUtiles2" aboutText="about us"/> this are called props */}
     <Router>
-    <Navbar title='TextUtils' mode={mode} toggleModeD={toggleModeD} toggleModeR={toggleModeR}/> 
+    <Navbar title='TextUtils' mode={mode} toggleMode={toggleMode}/> 
       <Alerts alert = {alert}/>
     <div className='container my-3'>
     <Routes> 
